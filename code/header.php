@@ -1,7 +1,4 @@
 <html>
-    <head>
-    <link rel="stylesheet" href="stylesheet.css"/>
-</head>
 <div class="header">
     <div class="headerGrid">
         <div class="headerTitle">
@@ -12,7 +9,7 @@
         <nav>
             <li>Home</li>
             <li>Login</li>
-            <li>Admin</li>
+            <li>Orders</li>
             <li>Cart</li>
         </nav>
     </div>
