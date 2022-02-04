@@ -1,0 +1,73 @@
+/*header.php*/
+
+.header{
+    background-color: rgb(63, 145, 184);
+    width: auto;
+}
+
+.headerGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 1024px;
+    margin: auto;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightgray;
+    list-style-type: none;
+    font-size: 22px;
+}
+
+.headerTitle{
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    margin: 0px;
+    height: 60px;
+}
+
+header h1{
+    margin: 0px;
+}
+
+nav{
+    display: flex;
+    justify-self: right;
+    align-items: center;
+    height: 60px;
+}
+
+nav li{
+
+    margin: 0 0 0 20px;
+}
+
+/**/
+
+body{
+    margin: 0;
+}
+
+.content{
+    width: 1024px;
+    margin: auto;
+}
+
+/*orders.php*/
+
+.orders{
+    border: 3px ;
+    margin: 0px auto 0px;
+    padding: 15px 15px 5px 15px;
+    max-width: 100%;
+    height: auto;
+    overflow: auto;
+}
+
+.orders li{
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    padding-bottom: 10px;
+    background-color: lightgrey;
+}
+
