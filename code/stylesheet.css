@@ -70,4 +70,136 @@ body{
     padding-bottom: 10px;
     background-color: lightgrey;
 }
+.result div {
+    background-color: rgb(7 196 161);
+    display: flex;
+    flex-direction: row;
+}
 
+.result a {
+    margin: 0;
+}
+
+.result div img {
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin-left: 5px;
+}
+
+.result div h4 {
+    float: right;
+    font-size: 20px;
+    margin: 20px;
+}
+input#searchChannel {
+    width: 50%;
+    background: purple;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+input#searchProduct::placeholder {
+    text-align: center;
+    color: white;
+}
+input#searchChannel {
+    width: 50%;
+    background: purple;
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px 8px;
+    margin: 2%;
+    color: white;
+    min-height: 10%;
+    min-width: 70%;
+    position: absolute;
+    top: 17%;
+    left: 13%
+}
+
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 15%;
+    top: 28%;
+}
+
+.searchResultBox {
+    z-index: 3;
+    width: 187%;
+    background: rgb(7 196 161);
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px 8px;
+    color: white;
+    min-height: 5%;
+}
+
+.searchResultBox img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 5px;
+    float: left;
+}
+
+.searchResultBox h4 {
+    float: right;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.submitPost {
+    position: absolute;
+    top: 80%;
+}
+
+
+
+
+
+#search {
+    width: 250px;
+}
+.records{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px;
+}
+.record {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+}
+footer {
+	background-color: lightgrey;
+    width: 1024px;
+	height: 250px;
+	margin: auto;
+}
+.footerright {
+	float: left;
+        text-align: left;
+        width: 512px;
+	height: 100px;
+	margin: 10px;
+        padding: 10px;
+}
+.footerleft {
+	float: right;
+	text-align: right;
+	margin: 10px;
+    padding: 10px;
+}
+.imgqueens{
+    height: 100px;
+    width: 100px;
+    margin: 0%;
+    padding: 0%
+}
