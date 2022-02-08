@@ -41,16 +41,16 @@ function invalidpwdMatch($pwd, $pwdRepeat)
     }
     return $result;
 }
-function UidExist($name, $conn, $email)
+function UidExist($conn, $email)
 {
-    $sql = "SELECT * FROM  users WHERE usersId = ? AND UsersEmail = ?";
+    $sql = "SELECT * FROM  users WHERE UsersEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: Register.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $name, $email);
+    mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
 
     $resultDATA = mysqli_stmt_get_result($stmt);
@@ -70,47 +70,50 @@ function CreateUser($conn, $name, $email, $pwd)
         header("location: Register.php?error=stmtfailed");
         exit();
     }
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT,);
 
     mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: Register.php?error=none");
+    header("location: login.php");
 }
 ?>
 
 
 
 <?php
-function emptyInputLogin($name, $pwd)
+function emptyInputLogin($email, $pwd)
 {
 
-    if (empty($name) || empty($pwd)) {
-        return false;
-    } else {
+    if (empty($email) || empty($pwd)) {
         return true;
+    } else {
+        return false;
     }
-    function loginUser($conn, $name, $pwd ,$email){
+    
+}
+function loginUser($conn, $email, $pwd){
 
-        $idExist = UidExist($conn, $name, $email);
+    $idExist = UidExist($conn, $email, $pwd);
+    
+
+    if ($idExist == false) {
+        header("location: login.php?error=wronglogin");
         
+    }
 
-        if ($idExist === false) {
-            header("location: login.php?error=wronglogin");
-            
-        }
-        $pwdHashed = $idExist["usersPwd"];
-        $checkPwd = password_verify($pwd, $pwdHashed);
+    $hashedPwd = $idExist["usersPwd"];
+    $checkPwd = password_verify($pwd, $hashedPwd);
+    
 
-        if ($checkPwd === false){
-            header("location: login.php?error=wronglogin");
-           
-        }
-        else if ($checkPwd === true){ 
-            session_start();
-            $_SESSION["userid"] = $idExist["usersId"];
-            header("location: index.php");
-        }
+    if ($checkPwd == false){
+        header("location: login.php?error=wrongpsw");
+       
+    }
+     else if ($checkPwd == true){ 
+        session_start();
+       $_SESSION["userid"] = $idExist["usersId"];
+        header("location: index.php");
     }
 }
 ?>
