@@ -12,7 +12,7 @@
             <div class="LoginBox">
                 <form action="register.php" method="post">
                     <input type="text" name="name" placeholder="Full name...">
-                    <input type="text" name="email" placeholder="Email...">
+                    <input type="email" name="email" placeholder="Email...">
                     <input type="password" name="pwd" placeholder="Password...">
                     <input type="password" name="pwdrepeat" placeholder="Repeat Password...">
                     <button type="submit" name="submit">Sign Up</button>
@@ -50,8 +50,8 @@
             header("location: Register.php?error=invalidpwd");
             exit();
         }
-        if (UidExist($name, $conn, $email) !== false) {
-            header("location: Register.php?error=nametaken");
+        if (UidExist($conn,$name, $email) == true) {
+            header("location: login.php");
             exit();
         }
 
