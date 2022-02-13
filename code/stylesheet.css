@@ -1,10 +1,9 @@
-/*header.php*/
+/*header --------------------------------------------------------------------------------------------------------------------------------*/
 
 .header{
     background-color: rgb(63, 145, 184);
     width: auto;
 }
-
 .headerGrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -16,7 +15,6 @@
     list-style-type: none;
     font-size: 22px;
 }
-
 .headerTitle{
     display: flex;
     justify-self: flex-start;
@@ -24,23 +22,23 @@
     margin: 0px;
     height: 60px;
 }
-
 header h1{
     margin: 0px;
 }
-
 nav{
     display: flex;
     justify-self: right;
     align-items: center;
     height: 60px;
 }
-
 nav li{
-
     margin: 0 0 0 20px;
 }
-
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: none;
+}
 /**/
 
 body{
@@ -52,7 +50,7 @@ body{
     margin: auto;
 }
 
-/*orders.php*/
+/*orders --------------------------------------------------------------------------------------------------------------------------------*/
 
 .orders{
     border: 3px ;
@@ -62,7 +60,6 @@ body{
     height: auto;
     overflow: auto;
 }
-
 .orders li{
     display: block;
     margin-bottom: 5px;
@@ -70,102 +67,9 @@ body{
     padding-bottom: 10px;
     background-color: lightgrey;
 }
-.result div {
-    background-color: rgb(7 196 161);
-    display: flex;
-    flex-direction: row;
-}
 
-.result a {
-    margin: 0;
-}
+/* main -------------------------------------------------------------------------------------------------------------------------------*/
 
-.result div img {
-    object-fit: cover;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    margin-left: 5px;
-}
-
-.result div h4 {
-    float: right;
-    font-size: 20px;
-    margin: 20px;
-}
-input#searchChannel {
-    width: 50%;
-    background: purple;
-    border-radius: 5px;
-    font-size: 17px;
-}
-
-input#searchProduct::placeholder {
-    text-align: center;
-    color: white;
-}
-input#searchChannel {
-    width: 50%;
-    background: purple;
-    border-radius: 5px;
-    border-color: black;
-    padding: 5px 8px;
-    margin: 2%;
-    color: white;
-    min-height: 10%;
-    min-width: 70%;
-    position: absolute;
-    top: 17%;
-    left: 13%
-}
-
-.searchResult {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    left: 15%;
-    top: 28%;
-}
-
-.searchResultBox {
-    z-index: 3;
-    width: 187%;
-    background: rgb(7 196 161);
-    border-radius: 5px;
-    border-color: black;
-    padding: 5px 8px;
-    color: white;
-    min-height: 5%;
-}
-
-.searchResultBox img {
-    object-fit: cover;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    margin-left: 5px;
-    float: left;
-}
-
-.searchResultBox h4 {
-    float: right;
-    margin-left: 30px;
-    margin-top: 5px;
-    font-size: 18px;
-}
-
-.submitPost {
-    position: absolute;
-    top: 80%;
-}
-
-
-
-
-
-#search {
-    width: 250px;
-}
 .records{
     display: flex;
     flex-wrap: wrap;
@@ -177,10 +81,107 @@ input#searchChannel {
     padding: 10px;
     border: 1px solid black;
 }
+.imgqueens{
+    height: 100px;
+    width: 100px;
+    margin: 0%;
+    padding: 0%
+}
+select{
+    width: 50%;
+}
+span {
+    display: inline-block;
+    transform: translate(-1em, 2em);
+  }
+/* search ---------------------------------------------------------------------------------------------------------------------------- */
+
+.result div {
+    background-color: rgb(7 196 161);
+    display: flex;
+    flex-direction: row;
+}
+.result div h4 {
+    float: right;
+    font-size: 20px;
+    margin: 20px;
+}
+input#searchChannel {
+    width: 50%;
+    background: purple;
+    border-radius: 5px;
+    font-size: 17px;
+}
+input#searchProduct::placeholder {
+    text-align: center;
+    color: white;
+}
+input#searchChannel {
+    width: 50%;
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px 8px;
+    margin: 2%;
+    color: white;
+    min-height: 10%;
+    min-width: 70%;
+    position: absolute;
+    top: 17%;
+    left: 13%
+}
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 15%;
+    top: 28%;
+}
+.searchResultBox {
+    z-index: 3;
+    width: 187%;
+    background: rgb(7 196 161);
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px 8px;
+    color: white;
+    min-height: 5%;
+}
+.searchResultBox img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-left: 5px;
+    float: left;
+    background-color: blue;
+}
+.searchbox{
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    float: right;
+}
+.searchbox form input{
+    width: 100%;
+}
+.searchResultBox h4 {
+    float: right;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-size: 18px;
+}
+.submitPost {
+    position: absolute;
+    top: 80%;
+}
+#search {
+    width: 250px;
+}
+/* footer ----------------------------------------------------------------------------------------------------------------------------------*/
 footer {
 	background-color: lightgrey;
     width: 1024px;
-	height: 250px;
+	height: 200px;
 	margin: auto;
 }
 .footerright {
@@ -196,10 +197,4 @@ footer {
 	text-align: right;
 	margin: 10px;
     padding: 10px;
-}
-.imgqueens{
-    height: 100px;
-    width: 100px;
-    margin: 0%;
-    padding: 0%
 }
