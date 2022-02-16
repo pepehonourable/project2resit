@@ -3,14 +3,14 @@
 <head>
 <title>Log in</title>
 </head>
-<link rel="stylesheet" href="Styling/design.css">
+<link rel="stylesheet" href="../Styling/design.css">
 <body>
     <section>
  <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" >
      <div class="positionBoxLogin">
      <div class="LoginBox">
      <h1>Log in</h1>
- <label >Email:</label><br>
+ <label >Username:</label><br>
   <input type="email" class="inputBoxLogin" name="email" value=""><br>
   <label >Password:</label><br>
   <input type="password" class="inputBoxLogin" name="pwd" value=""><br><br>
@@ -33,7 +33,7 @@ if (!empty($_GET['error'])) {
         echo "incorrect login requirements";
     }
     else if ($_GET['error'] == "wrongpsw"){
-        echo "password doesn't match!";
+        echo "Enter a proper Password!";
     }
     else if ($_GET["error"] == "stmtfailed"){
         echo "something went wrong try again!";
