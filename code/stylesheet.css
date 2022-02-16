@@ -198,3 +198,37 @@ footer {
 	margin: 10px;
     padding: 10px;
 }
+/* login and register----------------------------------------------------------------------------------------------------------------------*/
+
+body{
+    background-color: white;
+}
+.LoginBox{
+    border: black 1px solid;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    
+}
+.positionBoxLogin{
+    margin-top: 10%;
+    margin-left:40% ;
+    width: 350px;
+    height: 260px;
+}
+.inputBoxLogin{
+    width: 90%;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+.submitforLogin{
+    background-color: rgb(63, 145, 184);
+    margin-right: 35px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    margin-top: 10px;
+}
+.registerboxspacing{
+    margin-top: 15px;
+    width: 80%;
+}
