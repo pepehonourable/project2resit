@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\sql_injection_subst;
+
 function emptyInputRegister($name, $email, $pwd, $pwdRepeat)
 {
 
@@ -41,6 +43,15 @@ function invalidpwdMatch($pwd, $pwdRepeat)
     }
     return $result;
 }
+function Invalidage($age){
+  if  ($age >16){
+      $result = false;
+  }
+else if($age <18) {
+    $result = true;
+}
+return $result;
+}
 function UidExist($conn, $email)
 {
     $sql = "SELECT * FROM  users WHERE UsersEmail = ?";
@@ -64,7 +75,22 @@ function UidExist($conn, $email)
 }
 function CreateUser($conn, $name, $email, $pwd)
 {
-    $sql = "INSERT INTO users(usersName, usersEmail, usersPwd) VALUES(?, ?, ?)";
+    $sql = "SELECT usersEmail FROM users WHERE usersEmail=?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: Register.php?error=stmtfailed");
+        exit();
+        mysqli_stmt_bind_param($stmt, "s",  $email);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt,$usedEmails);
+    mysqli_stmt_store_result($stmt);
+    }
+    if(mysqli_stmt_num_rows($stmt) > 0) {
+        mysqli_stmt_close($stmt);
+        header("location: Register.php?error=emailused");
+        exit();
+    }else{
+        $sql = "INSERT INTO users(usersName, usersEmail, usersPwd) VALUES(?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: Register.php?error=stmtfailed");
@@ -76,6 +102,7 @@ function CreateUser($conn, $name, $email, $pwd)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: login.php");
+    } 
 }
 ?>
 
