@@ -4,7 +4,7 @@
 <head>
     <title>Register</title>
 </head>
-<link rel="stylesheet" href="../Styling/design.css">
+<link rel="stylesheet" href="../code/stylesheet.css">
 <body>
 <div class="positionBoxLogin">
     <section class="register-form">
