@@ -54,9 +54,9 @@ include "connect.php";
         </div>
         <nav>
             <li><a href ="MainPage.php">Home</a></li>
-            <li><a href ="Register.php">Login</li>
+            <li><a href ="login.php">Login</li>
             <li><a href ="orderUser.php">Orders</a></li>
-            <li>Cart</li>
+            <li><a href ="cart.php">Cart</a></li>
         </nav>
         </div>
     </div>

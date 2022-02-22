@@ -14,14 +14,14 @@
                     <input type="text" name="name" placeholder="Full name..." class="registerboxspacing">
                     <br>
                     <input type="number" name="age" placeholder="Age..." class="registerboxspacing">
-                    <br>
+                    <p>
                     <input type="email" name="email" placeholder="Email..." class="registerboxspacing">
                     <br>
                     <input type="password" name="pwd" placeholder="Password..." class="registerboxspacing">
                     <br>
                     <input type="password" name="pwdrepeat" placeholder="Repeat Password..." class="registerboxspacing">
-                    <br>
-                    <button type="submit" name="submit" class="submitforLogin">Sign Up</button>
+                    <p>
+                    <button type="submit" name="submit" value ="Sign Up" <button class="custom-btn btn-8"></button>
                 </form>
             </div>
         </div>

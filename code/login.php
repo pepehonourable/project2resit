@@ -14,7 +14,7 @@
   <input type="email" class="inputBoxLogin" name="email" value=""><br>
   <label >Password:</label><br>
   <input type="password" class="inputBoxLogin" name="pwd" value=""><br><br>
-  <input type="submit" name="submit"value="Log in" class="submitforLogin">
+  <input type="submit" value="Log in" name="submit" <button class="custom-btn btn-8"></button>
   <a href="Register.php">Register</a>
 </div>
 </div>

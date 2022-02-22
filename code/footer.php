@@ -1,7 +1,7 @@
 <html>
 <footer>
     <div class= "footerright">
-        <p>&copy 2022 Vinyl Recors Shop!<p> 
+        <p>&copy 2022 Vinyal Recors Shop!<p> 
         <p>Send us a direct e-mail!</p>
     </div>
     <div class="footerleft">

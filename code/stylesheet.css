@@ -46,6 +46,7 @@ a:-webkit-any-link {
 
 body{
     margin: 0;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .content{
@@ -95,7 +96,129 @@ select{
 span {
     display: inline-block;
     transform: translate(-1em, 2em);
+}
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: rgb(25, 89, 119);
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
   }
+  .btn-8 {
+    background-color: #f0ecfc;
+  background-image: linear-gradient(315deg, #f0ecfc 0%, rgb(63, 145, 184) 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+  }
+  .btn-8 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .btn-8:before,
+  .btn-8:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    bottom: 0;
+    background: rgb(63, 145, 184);
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  .btn-8:before{
+     height: 0%;
+     width: 2px;
+  }
+  .btn-8:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-8:hover:before {
+    height: 100%;
+  }
+  .btn-8:hover:after {
+    width: 100%;
+  }
+  .btn-8:hover{
+    background: transparent;
+  }
+  .btn-8 span:hover{
+    color: rgb(63, 145, 184);
+  }
+  .btn-8 span:before,
+  .btn-8 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: rgb(63, 145, 184);
+    /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+    transition: all 0.3s ease;
+  }
+  .btn-8 span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn-8 span:after {
+    height: 2px;
+    width: 0%;
+  }
+  .btn-8 span:hover:before {
+    height: 100%;
+  }
+  .btn-8 span:hover:after {
+    width: 100%;
+}
+h1 { 
+    color: #5d757c; 
+    font-family: ‘Trocchi’, serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; m
+    argin: 0;
+}
+h2 { 
+    color: #5d757c; 
+    font-family: ‘Source Sans Pro’, sans-serif; 
+    font-size: 28px; 
+    font-weight: 400; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+}
+.subheader { 
+    font-size: 26px; 
+    font-weight: 300; 
+    color: #5ab0ca; 
+    margin: 0 0 24px;
+ }
+p { 
+    color: #5d757c; 
+    font-family: ‘Source Sans Pro’, sans-serif; 
+    font-size: 18px; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+    line-height: 20px;
+}
+
 /* search ---------------------------------------------------------------------------------------------------------------------------- */
 
 .result div {
@@ -125,19 +248,14 @@ input#searchProduct::placeholder {
 }
 .searchresult {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     position: absolute;
-    background-color: rgb(63, 145, 184);
-    width: 280px;
-    height: 70px;
+    background-color: #5ab0ca;
+    width: 325px;
+    height: 55px;
     padding: 5px;
     margin: 5px;
-}
-input#searchChannel {
-    width: 50%;
-    background: purple;
-    border-radius: 5px;
-    font-size: 17px;
+    text-align: center;
 }
 input#searchProduct::placeholder {
     text-align: center;
@@ -193,18 +311,18 @@ footer {
     border: 1px solid black;
 }
 footer {
-	background-color: lightgrey;
-    width: 1024px;
+	background-color: #303c41;
+    width: auto;
 	height: 250px;
 	margin: auto;
 }
 .footerright {
 	float: left;
-        text-align: left;
-        width: 512px;
+    text-align: left;
+    width: 512px;
 	height: 100px;
 	margin: 10px;
-        padding: 10px;
+    padding: 10px;
 }
 .footerleft {
 	float: right;
