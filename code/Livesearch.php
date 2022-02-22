@@ -11,7 +11,7 @@ if(isset($_POST['input'])){
     if(mysqli_num_rows($result) > 0){
       while($row = mysqli_fetch_assoc($result)){
         $Title = $row['Title'];
-        echo  '<a href = "orderUser.php">$Title</a>';
+        echo "<div class = searchresult><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>";
       }
 
     }else{

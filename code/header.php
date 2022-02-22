@@ -22,12 +22,7 @@ include "connect.php";
                <form action = "#" method = "POST">
                    <input type="text" class = "form-control"  id = "live_search" autocomplete = "off" placeholder = "Search product"/> 
                </form>
-               <div id ="searchresult"></div>  
-           <div class="search-box">
-               <form action = "#" method = "POST">
-                   <input type="text" class = "form-control"  id = "live_search" autocomplete = "off" placeholder = "Search product"/> 
-               </form>
-               <div id="searchresult"></div> 
+               <div id ="searchresult"></div>
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                <script type="text/javascript">    //// using this id we will display our data will come from .php page
                    $(document).ready(function (){ 
@@ -67,3 +62,4 @@ include "connect.php";
     </div>
 </div>
 </html>
+    
