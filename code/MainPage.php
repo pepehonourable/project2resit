@@ -37,6 +37,7 @@
                 <td>Category</td>
                 <td>Description</td>
                 </tr>
+
                 <?php
                     if(isset($_POST['submit'])) { 
                         if(isset($_POST['type'])){
@@ -45,9 +46,9 @@
                         $query = "SELECT * FROM product WHERE Title LIKE '{$submit}%'";
                         $result = mysqli_query($conn, $query);
                         
-                            $row = mysqli_fetch_assoc($result);
-                            $Title = $row['Title'];
-                            echo "<div><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>"; 
+                        $row = mysqli_fetch_assoc($result);
+                        $Title = $row['Title'];
+                        echo "<div><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>"; 
                         }
                     }
                 
@@ -59,6 +60,7 @@
                     }
                     while($info = mysqli_fetch_array($result)) {
                 ?>
+
                 <tr>
                 <td><?php echo $info['Title']; ?></td>
                 <td><?php echo $info['Category']; ?></td>
@@ -69,31 +71,50 @@
                 ?>
                 </table>
 
-            <div class="records">
+                <div class="content">
+            <h1>Welcome to Vinyl Recors Shop!</h1>
+            <h2>Found products</h2>
+            <div class = "records">
+               <div class = "record">
+                  <img src="img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30 </p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/project2resit/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30 </p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30 </p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30 </p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30</p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30</p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30</p>
+                </div> 
+                <p></p>
                 <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
-                <div class = "record">
-                    <img src = "/code/img/img.jpg" alt="record">
-                </div>
+                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro 30,30</p>
+                </div> 
+                <p></p>
             </div>
-        <?php include "footer.php" ?>
-    
+        </div>
+<?php include "footer.php" ?>
