@@ -18,11 +18,11 @@ include "connect.php";
             <li>NHL WEBSHOP</li>
         </div>
         <div class="search">
-           <div class="search-box">
+           <div class="searchbox">
                <form action = "#" method = "POST">
                    <input type="text" class = "form-control"  id = "live_search" autocomplete = "off" placeholder = "Search product"/> 
                </form>
-               <div id="searchresult"></div>  
+               <div id ="searchresult"></div>  
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                <script type="text/javascript">    //// using this id we will display our data will come from .php page
                    $(document).ready(function (){ 
@@ -36,7 +36,7 @@ include "connect.php";
                                    url: "livesearch.php",
                                    type: "POST",
                                    data:{"input" : input}, // if this code is not empty then using ajax method page redirects to file .php with the data input 
-                                   
+
                                    success:function(data){
                                        $("#searchresult").html(data);  
                                        console.log('success'); // after success functioin data will be shown in the div section with an id search result 
@@ -54,8 +54,8 @@ include "connect.php";
              </div>
         </div>
         <nav>
-            <li><a href ="main.php">Home</a></li>
-            <li>Login</li>
+            <li><a href ="MainPage.php">Home</a></li>
+            <li><a href ="Register.php">Login</li>
             <li><a href ="orderUser.php">Orders</a></li>
             <li>Cart</li>
         </nav>

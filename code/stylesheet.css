@@ -25,6 +25,9 @@
 header h1{
     margin: 0px;
 }
+h6{
+    color: grey;
+}
 nav{
     display: flex;
     justify-self: right;
@@ -106,45 +109,19 @@ span {
     font-size: 20px;
     margin: 20px;
 }
-input#searchChannel {
-    width: 50%;
-    background: purple;
-    border-radius: 5px;
-    font-size: 17px;
-}
 input#searchProduct::placeholder {
     text-align: center;
-    color: white;
+    color: grey;
 }
-input#searchChannel {
-    width: 50%;
-    border-radius: 5px;
-    border-color: black;
-    padding: 5px 8px;
-    margin: 2%;
-    color: white;
-    min-height: 10%;
-    min-width: 70%;
-    position: absolute;
-    top: 17%;
-    left: 13%
-}
-.searchResult {
+.searchresult {
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 15%;
-    top: 28%;
-}
-.searchResultBox {
-    z-index: 3;
-    width: 187%;
-    background: rgb(7 196 161);
-    border-radius: 5px;
-    border-color: black;
-    padding: 5px 8px;
-    color: white;
-    min-height: 5%;
+    background-color: rgb(63, 145, 184);
+    width: 280px;
+    height: 70px;
+    padding: 5px;
+    margin: 5px;
 }
 .searchResultBox img {
     object-fit: cover;
@@ -231,4 +208,41 @@ body{
 .registerboxspacing{
     margin-top: 15px;
     width: 80%;
+}
+/* table ---------------------------------------------------------------------------------------------------------------------------------*/
+
+table {
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+}
+table thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #d8d8d8;
+	font-size: 14px;
+}
+table thead tr th:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table thead tr th:last-child {
+	border-radius: 0 8px 8px 0;
+}
+table tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+table tbody tr:nth-child(even){
+	background: #f3f3f3;
+}
+table tbody tr td:first-child {
+	border-radius: 8px 0 0 8px;
+}
+table tbody tr td:last-child {
+	border-radius: 0 8px 8px 0;
 }

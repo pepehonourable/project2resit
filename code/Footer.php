@@ -10,7 +10,7 @@
     <body>
         <footer>
           <div class= "footerright">
-             <p>&copy 2022 Bings Cars<p> 
+             <p>&copy 2022 Vinyal Shop<p> 
              <p>Send us a direct e-mail!</p>
           </div>
           <div class="footerleft">
@@ -18,8 +18,6 @@
              <p>Tuesday 9:00-18:00</p>
              <p>Wednessday 9:00-18:00</p>
              <p>Thursday 9:00-21:00</p>
-             <p>Friday 9:00-21:00</p>
-             <p>Saturday 9:00-17:00</p>
           </div>
          </footer>
       </div>

@@ -6,14 +6,17 @@ if(isset($_POST['input'])){
 
     $query = "SELECT * FROM product WHERE Title LIKE '{$input}%'"; // if input is set then this query will run, % - represents 1 or multiple characters 
     
+    $stmt = mysqli_prepare($conn, $query) OR DIE ("Preparation Error 1");
+    mysqli_stmt_execute($stmt) OR DIE ("Data retrieval error");
+    mysqli_stmt_store_result($stmt);
+
     $result = mysqli_query($conn, $query);
 
     if(mysqli_num_rows($result) > 0){
       while($row = mysqli_fetch_assoc($result)){
         $Title = $row['Title'];
-        echo  '<a href = "orderUser.php">$Title</a>';
+        echo "<div class = searchresult><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>";
       }
-
     }else{
         echo "<h6 class='text-danger text-center mt-3'>No data found</h6>";
     }
