@@ -363,6 +363,25 @@ body{
 .registerboxspacing{
     margin-top: 15px;
     width: 80%;
+    margin-bottom: 2px;
+}
+.UsersAndAdminpostion{
+    
+    background-color: rgb(63, 145, 184);
+    color: white;
+    padding: 6px;
+    border: black 1px solid;
+    margin-left: 40px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.Registerforaccount{
+background-color: rgb(63, 145, 184);
+color: white;
+padding: 6px;
+border: black 1px solid;
+margin-top: 10px;
+text-decoration: none;
 }
 /* table ---------------------------------------------------------------------------------------------------------------------------------*/
 
