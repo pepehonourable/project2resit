@@ -2,10 +2,10 @@
 
 use function PHPSTORM_META\sql_injection_subst;
 
-function emptyInputRegister($name, $email, $pwd, $pwdRepeat)
+function emptyInputRegister($name, $email, $pwd, $pwdRepeat,$age)
 {
 
-    if (empty($name) || empty($email) || empty($pwd) || empty($pwdRepeat)) {
+    if (empty($name) || empty($email) || empty($pwd) || empty($pwdRepeat) || empty($age)) {
         return true;
     } else {
         return false;
@@ -106,8 +106,6 @@ function CreateUser($conn, $name, $email, $pwd)
 }
 ?>
 
-
-
 <?php
 function emptyInputLogin($email, $pwd)
 {
@@ -119,14 +117,49 @@ function emptyInputLogin($email, $pwd)
     }
     
 }
-function loginUser($conn, $email, $pwd){
 
-    $idExist = UidExist($conn, $email, $pwd);
+function adminlogin($conn, $email, $pwd){
     
+    $idExist = UidExist($conn, $email, $pwd);
+    $admin ="admin@hotmail.com";
+    $adminpsw ="admin";
 
     if ($idExist == false) {
-        header("location: login.php?error=wronglogin");
-        
+        header("location: login.php?error=wronglogin"); 
+    }
+
+    $hashedPwd = $idExist["usersPwd"];
+    $checkPwd = password_verify($adminpsw, $hashedPwd);
+    $email = IsValidEmail($admin);
+
+    if ($checkPwd == false ){
+        header("location: login.php?error=wrongpsw");
+        echo "Wrong Password or Email";
+       
+    }
+     else if ($checkPwd == true ){ 
+            session_start();
+             $_SESSION["userid"] = $idExist["usersId"];
+            header("location: admin.php");
+        }
+     }
+
+    
+    
+
+
+
+ function loginUser($conn, $email, $pwd){
+
+    $admin = "admin@hotmail.com";
+    $idExist = UidExist($conn, $email, $pwd);
+
+    if(adminlogin($conn,$email,$admin) !== false){
+    header("Location: admin.php");
+    }
+
+    if ($idExist == false) {
+        header("location: login.php?error=wronglogin"); 
     }
 
     $hashedPwd = $idExist["usersPwd"];
@@ -138,9 +171,12 @@ function loginUser($conn, $email, $pwd){
        
     }
      else if ($checkPwd == true){ 
-        session_start();
-       $_SESSION["userid"] = $idExist["usersId"];
-        header("location: index.php");
-    }
-}
+            session_start();
+             $_SESSION["userid"] = $idExist["usersId"];
+            header("location: index.php");
+        }
+     }
+    
+
+
 ?>
