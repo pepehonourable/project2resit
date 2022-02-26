@@ -41,9 +41,17 @@
                 </tr>
 
                 <?php
+
+                    if(isset($_POST['title'])){
+                      $result1 = mysqli_query($conn,"SELECT * FROM product where title='".$_GET['title']."'");
+                    }else{
+                      $result1 = mysqli_query($conn,"SELECT * FROM product");
+                    }
+                    while($info1 = mysqli_fetch_array($result1)) {
+                    }
                     if(isset($_POST['submit'])) { 
                         if(isset($_POST['type'])){
-                        echo $_POST['type'];
+                        echo $_POST['type'] . $info1 ['Title'];;
                         $submit = $_POST['submit'];
                         $query = "SELECT * FROM product WHERE Title LIKE '{$submit}%'";
                         $result = mysqli_query($conn, $query);
