@@ -43,43 +43,36 @@
                 <?php
 
                     if(isset($_POST['title'])){
-                      $result1 = mysqli_query($conn,"SELECT * FROM product where title='".$_GET['title']."'");
+                        $result = mysqli_query($conn,"SELECT * FROM product where title='".$_POST['type']."'");
                     }else{
-                      $result1 = mysqli_query($conn,"SELECT * FROM product");
-                    }
-                    while($info1 = mysqli_fetch_array($result1)) {
-                    }
+                    $result = mysqli_query($conn,"SELECT * FROM product");
+                    } 
+                    while($info = mysqli_fetch_array($result)) {
+
                     if(isset($_POST['submit'])) { 
                         if(isset($_POST['type'])){
-                        echo $_POST['type'] . $info1 ['Title'];;
+                        echo $_POST['type'];
+                    ?> 
+                    <tr>
+                    <td><p><?php echo $info['Title']; ?></p></td>
+                    <td><p><?php echo $info['Category']; ?></p></td>
+                    <td><p><?php echo $info['Description']; ?></p></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+                    </table>
+                    <?php
                         $submit = $_POST['submit'];
                         $query = "SELECT * FROM product WHERE Title LIKE '{$submit}%'";
                         $result = mysqli_query($conn, $query);
-                        
                         $row = mysqli_fetch_assoc($result);
                         $Title = $row['Title'];
                         echo "<div><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>"; 
                         }
                     }
+                ?>
                 
-                    if(isset($_POST['title'])){
-                        $result = mysqli_query($conn,"SELECT * FROM product where title='".$_GET['title']."'");
-                    }
-                    else{
-                        $result = mysqli_query($conn,"SELECT * FROM product");
-                    }
-                    while($info = mysqli_fetch_array($result)) {
-                ?>
-
-                <tr>
-                <td><p><?php echo $info['Title']; ?></p></td>
-                <td><p><?php echo $info['Category']; ?></p></td>
-                <td><p><?php echo $info['Description']; ?></p></td>
-                </tr>
-                <?php
-                }
-                ?>
-                </table>
 
           <div class="content">
             <div class = "records">
