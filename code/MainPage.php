@@ -18,7 +18,7 @@
             <p></p>
             <p></p>
             <h2>Find any records you want!</h2>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method=POST>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method=GET>
             <div class="search-box">
             <div class ="label">
                <label for="Contact type"><p>What do you want to find?</p></label>
@@ -33,42 +33,40 @@
             <input type="submit" value="Find" name="submit" <button class="custom-btn btn-8"></button>
             </form>
             <p></p>
-            <table id="table">
-                <tr>
-                <td><p>Title</p></td>
-                <td><p>Category</p></td>
-                <td><p>Description</p></td>
-                </tr>
 
                 <?php
-
-                    if(isset($_POST['title'])){
-                        $result = mysqli_query($conn,"SELECT * FROM product where title='".$_POST['type']."'");
+                    if(isset($_GET['submit'])) { 
+                      if(isset($_GET['type'])){
+                      echo $_GET['type'];     
+                    }
+                    if(isset($_GET['title'])){
+                        $result = mysqli_query($conn,"SELECT * FROM product where Title='".$_GET['type']."'");
                     }else{
                     $result = mysqli_query($conn,"SELECT * FROM product");
                     } 
                     while($info = mysqli_fetch_array($result)) {
+                    ?>
 
-                    if(isset($_POST['submit'])) { 
-                        if(isset($_POST['type'])){
-                        echo $_POST['type'];
-                    ?> 
+                    <table id="table">
+                    <tr>
+                    <td><p>Title</p></td>
+                    <td><p>Category</p></td>
+                    <td><p>Description</p></td>
+                    </tr>
                     <tr>
                     <td><p><?php echo $info['Title']; ?></p></td>
                     <td><p><?php echo $info['Category']; ?></p></td>
                     <td><p><?php echo $info['Description']; ?></p></td>
                     </tr>
-                    <?php
-                    }
-                    ?>
                     </table>
+
                     <?php
-                        $submit = $_POST['submit'];
+                        $submit = $_GET['submit'];
                         $query = "SELECT * FROM product WHERE Title LIKE '{$submit}%'";
                         $result = mysqli_query($conn, $query);
                         $row = mysqli_fetch_assoc($result);
-                        $Title = $row['Title'];
-                        echo "<div><a href ='orderUser.php?Title=".$row['Title']."' ><h4> ".$row["Title"]."</h4></a></div>"; 
+                        $Title = isset($_GET['title']);
+                        echo "<div><a href ='orderUser.php?Title=".$Title."' ><h4> ".$Title."</h4></a></div>"; 
                         }
                     }
                 ?>
