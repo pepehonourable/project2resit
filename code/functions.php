@@ -52,9 +52,9 @@ else if($age <18) {
 }
 return $result;
 }
-function UidExist($conn, $email)
+function UidExist($conn, $email)//Testing if there is an existing account or not
 {
-    $sql = "SELECT * FROM  users WHERE UsersEmail = ?";
+    $sql = "SELECT * FROM  user WHERE usersEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: Register.php?error=stmtfailed");
@@ -73,9 +73,9 @@ function UidExist($conn, $email)
         return $result;
     }
 }
-function CreateUser($conn, $name, $email, $pwd)
+function CreateUser($conn, $name, $email, $pwd)//Creating an account for Users
 {
-    $sql = "SELECT usersEmail FROM users WHERE usersEmail=?";
+    $sql = "SELECT usersEmail FROM user WHERE usersEmail=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: Register.php?error=stmtfailed");
@@ -90,7 +90,7 @@ function CreateUser($conn, $name, $email, $pwd)
         header("location: Register.php?error=emailused");
         exit();
     }else{
-        $sql = "INSERT INTO users(usersName, usersEmail, usersPwd) VALUES(?, ?, ?)";
+        $sql = "INSERT INTO user(userName, usersEmail, usersPwd) VALUES(?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: Register.php?error=stmtfailed");
@@ -119,7 +119,7 @@ function emptyInputLogin($email, $pwd)
 }
 
 function adminlogin($conn, $email, $pwd){
-    
+    //log in for admins
     $idExist = UidExist($conn, $email, $pwd);
     $admin ="admin@hotmail.com";
     $adminpsw ="admin";
@@ -150,7 +150,7 @@ function adminlogin($conn, $email, $pwd){
 
 
  function loginUser($conn, $email, $pwd){
-
+//login for  users
     $admin = "admin@hotmail.com";
     $idExist = UidExist($conn, $email, $pwd);
 
@@ -173,10 +173,7 @@ function adminlogin($conn, $email, $pwd){
      else if ($checkPwd == true){ 
             session_start();
              $_SESSION["userid"] = $idExist["usersId"];
-            header("location: index.php");
+            header("location: Mainpage.php");
         }
      }
-    
-
-
 ?>
