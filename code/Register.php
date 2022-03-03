@@ -4,7 +4,7 @@
 <head>
     <title>Register</title>
 </head>
-<link rel="stylesheet" href="../code/stylesheet.css">
+<link rel="stylesheet" href="../Styling/design.css">
 <body>
 <div class="positionBoxLogin">
     <section class="register-form">
@@ -14,20 +14,21 @@
                     <input type="text" name="name" placeholder="Full name..." class="registerboxspacing">
                     <br>
                     <input type="number" name="age" placeholder="Age..." class="registerboxspacing">
-                    <p>
+                    <br>
                     <input type="email" name="email" placeholder="Email..." class="registerboxspacing">
                     <br>
                     <input type="password" name="pwd" placeholder="Password..." class="registerboxspacing">
                     <br>
                     <input type="password" name="pwdrepeat" placeholder="Repeat Password..." class="registerboxspacing">
-                    <p>
-                    <button type="submit" name="submit" value ="Sign Up" <button class="custom-btn btn-8"></button>
+                    <br>
+                    <button type="submit" name="submit" class="submitforLogin">Sign Up</button>
+                    <a href="login.php" class="Registerforaccount">Already Have an account!</a>
                 </form>
             </div>
         </div>
     </section>
 
-    <?php
+    <?php // Creating an account 
 
     if (isset($_POST["submit"])) {
 
@@ -37,32 +38,37 @@
         $pwd = $_POST["pwd"];
         $pwdRepeat = $_POST["pwdrepeat"];
 
-        require_once 'db_conn.php';
+        require_once 'conn.php';
         require_once 'functions.php';
 
         if (emptyInputRegister($name, $email,$age, $pwd, $pwdRepeat) == true) {
             header("location: Register.php?error=emptyinput");
+            echo "Empty Input";
             exit();
         }
 
         if (InvalidName($name) !== false) {
-            echo "Invalid ID";
+            
             header("location: Register.php?error=invaliduid");
+            echo "Invalid ID";
             exit();
         }
         if (IsValidEmail($email) == true) {
-            echo "Invalid Email";
+            
             header("location: Register.php?error=invalidemail");
+            echo "Invalid Email";
             exit();
         }
         if(Invalidage($age) !==false){
-            echo "Invalid Age";
+            
             header("location: Register.php?error=Invalidage");
+            echo "Invalid Age";
             exit();
         }
         if (invalidpwdMatch($pwd, $pwdRepeat) !== false) {
-            echo "Invalid Password";
+            
             header("location: Register.php?error=invalidpwd");
+            echo "Invalid Password";
             exit();
         }
         if (UidExist($conn,$name, $email) == true) {
@@ -76,5 +82,4 @@
 
     ?>
 </body>
-
 </html>
