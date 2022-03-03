@@ -84,52 +84,35 @@
             }
             ?>
           </table>
-
-
-                
+          
+          <?php 
+          "<a href='cartAdd.php?id=".$row['ProductId']."'>Add to Cart</a>"
+          ?>
 
           <div class="content">
             <div class = "records">
                <div class = "record">
+                  <h2>Queens</h2>
+                  <p>Queen are a British rock band formed in London in 1970. Their classic line-up was Freddie Mercury, Brian May, Roger Taylor and John Deacon.</p>
                   <img src="img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30 </p>
+                  <p> &euro; 30,30 </p> 
                 </div> 
                 <p></p>
                 <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30 </p>
+                  <h2>Queens</h2>
+                  <p>Queen are a British rock band formed in London in 1970. Their classic line-up was Freddie Mercury, Brian May, Roger Taylor and John Deacon.</p>
+                  <img src="img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro; 30,30 </p> 
                 </div> 
                 <p></p>
                 <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30 </p>
-                </div> 
-                <p></p>
-                <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30 </p>
-                </div> 
-                <p></p>
-                <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30</p>
-                </div> 
-                <p></p>
-                <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30</p>
-                </div> 
-                <p></p>
-                <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30</p>
-                </div> 
-                <p></p>
-                <div class = "record">
-                  <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro; 30,30</p>
+                  <h2>Queens</h2>
+                  <p>Queen are a British rock band formed in London in 1970. Their classic line-up was Freddie Mercury, Brian May, Roger Taylor and John Deacon.</p>
+                  <img src="img/queens.jpg" class="imgqueens" alt = "Records">
+                  <p> &euro; 30,30 </p> 
                 </div> 
                 <p></p>
             </div>
         </div>
 <?php include "footer.php" ?>
+
