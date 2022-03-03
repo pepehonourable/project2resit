@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2022 at 11:52 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Mar 01, 2022 at 03:01 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,17 +87,19 @@ CREATE TABLE `quantity` (
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `UserName` varchar(20) NOT NULL,
-  `Password` varchar(20) NOT NULL
+  `UserId` int(11) NOT NULL,
+  `usersName` varchar(128) NOT NULL,
+  `usersEmail` varchar(128) NOT NULL,
+  `usersUid` varchar(128) NOT NULL,
+  `usersPwd` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `UserName`, `Password`) VALUES
-(1, 'Pepe', 'pepe');
+INSERT INTO `user` (`UserId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd`) VALUES
+(2, 'admin', 'admin@hotmail.com', '', '$2y$10$kU.LYvcpH0nN/G1q9lcjneOvQHCttFOqYwmltR44kxgZZp36uFF8K');
 
 --
 -- Indexes for dumped tables
@@ -126,7 +128,7 @@ ALTER TABLE `quantity`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`UserId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -148,7 +150,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -158,9 +160,9 @@ ALTER TABLE `user`
 -- Constraints for table `quantity`
 --
 ALTER TABLE `quantity`
-  ADD CONSTRAINT `quantity_ibfk_1` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`orderId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `quantity_ibfk_1` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `quantity_ibfk_2` FOREIGN KEY (`ProductId`) REFERENCES `product` (`ProductId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `quantity_ibfk_3` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`orderId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `quantity_ibfk_3` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
