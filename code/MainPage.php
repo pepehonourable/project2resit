@@ -18,7 +18,7 @@
             <p></p>
             <p></p>
             <h2>Find any records you want!</h2>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method=GET>
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method=get>
             <div class="search-box">
             <div class ="label">
                <label for="Contact type"><p>What do you want to find?</p></label>
@@ -30,88 +30,108 @@
                         <option value = "Rock">Rock</option>
                     </select>
             </div>
-            <input type="submit" value="Find" name="submit" <button class="custom-btn btn-8"></button>
-            </form>
-            <p></p>
+            <input value="Find" type="submit" name="submit" class="custom-btn btn-8">
+            </form> 
 
-                <?php
-                    if(isset($_GET['submit'])) { 
-                      if(isset($_GET['type'])){
-                      echo $_GET['type'];     
+            <table class="hideTable">
+              <tr>
+                <td>Id</td>
+                <td>Title</td>
+                <td>Description</td>
+                <td>Category</td>
+                <td>Price</td>
+                <td>Image</td>
+              </tr>
+            
+            <?php
+
+              if(isset($_GET['submit'])) {
+
+                  if(isset($_GET['type'])){
+
+                    $query = $conn ->prepare("SELECT * FROM product WHERE Category ='".$_GET['type']."'");
+
+                    if(!$query) {
+                      die(mysqli_error($conn));
                     }
-                    if(isset($_GET['title'])){
-                        $result = mysqli_query($conn,"SELECT * FROM product where Title='".$_GET['type']."'");
-                    }else{
-                    $result = mysqli_query($conn,"SELECT * FROM product");
-                    } 
-                    while($info = mysqli_fetch_array($result)) {
-                    ?>
 
-                    <table id="table">
-                    <tr>
-                    <td><p>Title</p></td>
-                    <td><p>Category</p></td>
-                    <td><p>Description</p></td>
-                    </tr>
-                    <tr>
-                    <td><p><?php echo $info['Title']; ?></p></td>
-                    <td><p><?php echo $info['Category']; ?></p></td>
-                    <td><p><?php echo $info['Description']; ?></p></td>
-                    </tr>
-                    </table>
+                    $query->execute();
 
-                    <?php
-                        $submit = $_GET['submit'];
-                        $query = "SELECT * FROM product WHERE Title LIKE '{$submit}%'";
-                        $result = mysqli_query($conn, $query);
-                        $row = mysqli_fetch_assoc($result);
-                        $Title = isset($_GET['title']);
-                        echo "<div><a href ='orderUser.php?Title=".$Title."' ><h4> ".$Title."</h4></a></div>"; 
-                        }
+                    if(!$query) {
+                      die(mysqli_error($conn));
                     }
-                ?>
+
+                    $result = $query->get_result();
+
+                    $musicData = $result->fetch_all(MYSQLI_ASSOC);
+
+                    $query -> close();
+                    
+                  }else{
+                    echo 'No category selected';
+                  }
+                  foreach($musicData as $music) {
+                
+              
+            ?>
+
+            <tr>
+              <td><?php echo $music['ProductId'] ?></td>
+              <td><?php echo $music['Title'] ?></td>
+              <td><?php echo $music['Description'] ?></td>
+              <td><?php echo $music['Category'] ?></td>
+              <td><?php echo $music['Price'] ?></td>
+              <td><?php echo $music['Image'] ?></td>
+            </tr>
+            <?php
+              }
+            }
+            ?>
+          </table>
+
+
                 
 
           <div class="content">
             <div class = "records">
                <div class = "record">
                   <img src="img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30 </p>
+                  <p> &euro; 30,30 </p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30 </p>
+                  <p> &euro; 30,30 </p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30 </p>
+                  <p> &euro; 30,30 </p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30 </p>
+                  <p> &euro; 30,30 </p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30</p>
+                  <p> &euro; 30,30</p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30</p>
+                  <p> &euro; 30,30</p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30</p>
+                  <p> &euro; 30,30</p>
                 </div> 
                 <p></p>
                 <div class = "record">
                   <img src= "img/queens.jpg" class="imgqueens" alt = "Records">
-                  <p> &euro 30,30</p>
+                  <p> &euro; 30,30</p>
                 </div> 
                 <p></p>
             </div>
