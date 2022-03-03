@@ -35,12 +35,10 @@
 
             <table class="hideTable">
               <tr>
-                <td>Id</td>
                 <td>Title</td>
                 <td>Description</td>
                 <td>Category</td>
                 <td>Price</td>
-                <td>Image</td>
               </tr>
             
             <?php
@@ -76,12 +74,10 @@
             ?>
 
             <tr>
-              <td><?php echo $music['ProductId'] ?></td>
               <td><?php echo $music['Title'] ?></td>
               <td><?php echo $music['Description'] ?></td>
               <td><?php echo $music['Category'] ?></td>
               <td><?php echo $music['Price'] ?></td>
-              <td><?php echo $music['Image'] ?></td>
             </tr>
             <?php
               }
