@@ -3,17 +3,8 @@ session_start();
 require "connect.php";
 $product = $_GET['id'];
 
-/*
-$product = $_SESSION['Product'];
-$table = $_SESSION['Table'];
-$field = $_SESSION['Field'];
-mysqli_query($conn,"DELETE FROM $table WHERE UserId=1 AND '$field=$product'");
-header('location:cart.php');*/
-
-foreach($_SESSION['cart'] as $k => $v) {
-    if($v == $product)
-      unset($_SESSION['cart'][$k]);
-  }
-
+$cookieArray = json_decode($_COOKIE['cart'], true);
+unset($cookieArray[$product]);
+setcookie("cart", json_encode($cookieArray), time() + (86400 * 365));
 header('location:cart.php');
 ?>

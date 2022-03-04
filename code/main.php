@@ -2,13 +2,12 @@
     include "header.php";
     include "connect.php";
     session_start();
-	//initialize cart if not set or is unset
-	if(!isset($_SESSION['cart'])){
-		$_SESSION['cart'] = array();
-	}
- 
-	//unset quantity
-	unset($_SESSION['quantityArray'])
+    /*if (isset($_COOKIE['cart'])) {
+        unset($_COOKIE['cart']);
+        setcookie('cart','', time() - 3600); // empty value and old timestamp
+    }*/
+    $userId = $_SESSION['userId'];
+    $_SESSION['userId'] = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +54,9 @@
                             echo "<li>Album: " . $row["Title"] . "<br>Description: " . $row["Description"] . "<br>Category: ". $row["Category"] . "<br>Price: €" . $row["Price"]. "</li>" ."<a href='cartAdd.php?id=".$row['ProductId']."'>Add to Cart</a>";
                         }
                     }
-                    
-                    var_dump($_SESSION['cart']);
+                    $test = json_decode($_COOKIE['cart'], true);
+                    $string = implode(',', $test);
+                    print_r($test);
                 ?>
             </div>
         </div>
