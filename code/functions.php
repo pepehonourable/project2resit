@@ -177,3 +177,30 @@ function adminlogin($conn, $email, $pwd){
         }
      }
 ?>
+<?php
+//Secerity file types of different types
+$filetmpname = $_FILES['image']['tmp_name'];
+    $filesize = $_FILES['image']['size'];
+    $fileError = $_FILES['image']['error'];
+    $filetype = $_FILES['image']['type'];
+    $fileExt = explode('.',$imag);
+    $fileactualext = strtolower(end($fileExt));
+    $allowed = array('jpg','jpeg','png','pdf');
+
+    if (in_array($fileactualext,$allowed)) {
+        if($fileError === 0){
+            if($filesize < 2500000){
+                $filenamenew = uniqid('',true).".". $fileactualext;
+                $filedestination = 'img/'. $filenamenew;
+                move_uploaded_file($filetmpname,$filedestination);
+            }else{
+                echo"Your file is Huge!";
+            }
+            }else {
+                echo "There was an error uploading your file!";
+            }
+        }
+     else{
+        echo "You cannot upload this file type!";
+    }
+?>
