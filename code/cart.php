@@ -59,20 +59,18 @@ if (isset($_COOKIE['cart'])) {
 
                     $result = $stmt->get_result(); // get the mysqli result
                     while ($row = mysqli_fetch_assoc($result)){
-                    //CHANGE SESSION QUANTITY
-               ?>
+                        ?>
                             <tr>
                                 <td></td>
                                 <td><?php echo $row["Title"]; ?></td>
                                 <td><?php echo $row["Price"]; ?></td>
-                                <td><input type="number" min="1" value="<?php echo $cart[$row["ProductId"]]; ?>" name="quantity"></td>
+                                <td><input type="number" min="1" value="<?php echo $cart[$row["ProductId"]]; ?>" name="quantity<?php echo $row["ProductId"]?>"></td>
                                 <td><?php $subTotal = $cart[$row["ProductId"]]* $row['Price'];
                                     echo $subTotal ?></td>
                                 <td><a href='delete.php?id=<?php echo $row['ProductId'] ?>'>Delete product</a></td>
                             </tr>
                     <?php
-                            $index++;
-                            $totalPrice += ($subTotal);
+                    $totalPrice += ($subTotal);
                         }
                         echo "Total Price: €" . $totalPrice;
                 } else {

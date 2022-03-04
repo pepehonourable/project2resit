@@ -5,7 +5,9 @@ require "connect.php";
 if (isset($_COOKIE['cart'])) {
     $cart = json_decode($_COOKIE['cart'], true);
     $cartKeys = array_keys($cart);
+	print_r($cart);
     $cartId = implode(', ', $cartKeys);
+
     $cartQuantity = array_values($cart);
     $quantity = implode(', ', $cartQuantity);
 	foreach ($cartKeys as $cartKey) {
@@ -18,13 +20,27 @@ if (isset($_COOKIE['cart'])) {
 	header('location: cart.php');
 }
 
-
 if(isset($_POST['save'])){
-	$order=[];
-	$order['quantity'] = $_POST['quantity'];
-	$orderArray = [];
-	array_push($orderArray, $order);
-	$str = print_r($orderArray,true);
+	if (isset($_COOKIE['cart'])) {
+		$cart = json_decode($_COOKIE['cart'], true);
+		$cartKeys = array_keys($cart);
+		print_r($cartKeys);
+		$cartArray = array();
+		for ($i=0; $i < sizeof($cart); $i++) { 
+			# code...
+			//$hell = array($cartKeys => $_POST['quantity'.$cartKeys[$i]]) ;
+			array_push($cartArray, $_POST['quantity'.$cartKeys[$i]]);
+		}
+		$newValue = array_values($cartArray);
+		$newCart = array_combine($cartKeys,$newValue);
+		
+		setcookie("cart", json_encode($newCart), time() + (86400 * 365));
+
+ 
+	}else{
+		$_SESSION['message'] = 'Cart is empty';
+		//header('location: cart.php');
+	}
 }
  
 if(isset($_POST['empty'])){
@@ -51,7 +67,6 @@ if(isset($_POST['order'])){
 		$stmt->close();
 
 $test = 1;
-
 		while($row = mysqli_fetch_assoc($result)){
 			$stmt = $conn->prepare("INSERT INTO orderline (OrderId, ProductId, Quantity) VALUES (?, ?, ?)");
 			$stmt->bind_param("iii", $lastinsertedId, $row['ProductId'], $test); //CHNAGE THISFW4OFNVOJWEWNLF
@@ -65,7 +80,7 @@ $test = 1;
 		else
 		{
 		$_SESSION['message'] = 'Please login';
-		//header('location: cart.php');
+		header('location: cart.php');
 		}
 	}
 ?>
