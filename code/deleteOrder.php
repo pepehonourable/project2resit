@@ -1,8 +1,13 @@
 <?php
 session_start();
 require "connect.php";
-$order = $_SESSION['Order'];
+$order = $_GET['id'];
+$userId = $_SESSION['UserId'];
+$_SESSION['UserId'] = 1;//DELETE ME
 
-mysqli_query($conn,"DELETE FROM orders WHERE UserId=1 AND OrderId=$order");
+$stmt = $conn->prepare("DELETE FROM orders WHERE UserId=? AND OrderId = ?");
+$stmt->bind_param("ii", $userId, $order);
+$stmt->execute();
+
 header('location:orderUser.php');
 ?>

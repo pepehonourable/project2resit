@@ -2,6 +2,23 @@
 session_start();
 require "connect.php";
 
+if (isset($_COOKIE['cart'])) {
+    $cart = json_decode($_COOKIE['cart'], true);
+    $cartKeys = array_keys($cart);
+    $cartId = implode(', ', $cartKeys);
+    $cartQuantity = array_values($cart);
+    $quantity = implode(', ', $cartQuantity);
+	foreach ($cartKeys as $cartKey) {
+		if(!is_int($cartKey)){
+			die("Not all values are int");
+		}
+	}
+}else{
+	$_SESSION['message'] = 'Cart set incorrectly';
+	header('location: cart.php');
+}
+
+
 if(isset($_POST['save'])){
 	$order=[];
 	$order['quantity'] = $_POST['quantity'];
@@ -11,61 +28,44 @@ if(isset($_POST['save'])){
 }
  
 if(isset($_POST['empty'])){
-	unset($_SESSION['cart']);
-	header('location: cart.php');
+        unset($_COOKIE['cart']);
+        setcookie('cart','', time() - 3600);
+		header('location:cart.php');
+
 }
 
 if(isset($_POST['order'])){
-	$_SESSION['UserId'] = 1;
-	$userId = $_SESSION['UserId'];
-	//temporary //make automatic from terry
-	if(isset($_SESSION['UserId'])){
+	$userId = $_SESSION['userId']; 	
+	if(isset($_SESSION['userId'])){
 		$trackCode = 32; //remove from database
 
-		$stmt = $conn->prepare("INSERT INTO orders (TrackCode, UserId) VALUES (?, ?)");
+		$stmt = $conn->prepare("INSERT INTO orders (TrackCode, userId) VALUES (?, ?)");
 		$stmt->bind_param("ii", $trackCode, $userId);
 		$stmt->execute();
-		
-		$sql = "SELECT * FROM product WHERE ProductId IN (".implode(',',$_SESSION['cart']).")";
-		$query = $conn->query($sql);
-		while($row = $query->fetch_assoc()){
-			$stmt = $conn->prepare("INSERT INTO orderline (OrderId, ProductId, Quantity) VALUES (53, ?, ?)");
-			$stmt->bind_param("ii", $row['ProductId'], $_SESSION['quantity']);
+		$lastinsertedId = $conn->insert_id;
+		$stmt->close();
+
+		$stmt = $conn->prepare("SELECT * FROM product WHERE ProductId IN (".implode(', ', $cartKeys).")");
+		$stmt->execute();
+		$result = $stmt->get_result(); // get the mysqli result
+		$stmt->close();
+
+$test = 1;
+
+		while($row = mysqli_fetch_assoc($result)){
+			$stmt = $conn->prepare("INSERT INTO orderline (OrderId, ProductId, Quantity) VALUES (?, ?, ?)");
+			$stmt->bind_param("iii", $lastinsertedId, $row['ProductId'], $test); //CHNAGE THISFW4OFNVOJWEWNLF
 			$stmt->execute();
 
-			unset($_SESSION['cart']);
+			unset($_COOKIE['cart']);
+			setcookie('cart','', time() - 3600);
+			header('location: main.php');
 			}
 		}
 		else
 		{
-		echo "Please login";
+		$_SESSION['message'] = 'Please login';
+		//header('location: cart.php');
 		}
 	}
-
-//for each
-
-/*
-$cart = implode(',', $_SESSION['cart']);
-
-$sql = array(); 
-$count=0;
-foreach( $cart as $row ) {
-    $count++;
-    $sql[] = '("'.$row.'", '.$cart[count].')';
-}
-	mysql_query('INSERT INTO orderline (PrdouctId) VALUES '.implode(',', $sql));
-	
-*/
-/*
-
-		$stmt = $conn->prepare("INSERT INTO orderline (ProductId, Quantity) VALUES (?, ?)");
-
-		foreach($productId as $row => $value){
-		$stmt->bind_param("ii", $productId, $quantity);
-		$stmt->execute();
-
-		$_SESSION['message'] = 'Order Placed';
-		header('location: cart.php');
-} 
-*/
 ?>
