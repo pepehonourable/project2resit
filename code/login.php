@@ -3,7 +3,7 @@
 <head>
 <title>Log in</title>
 </head>
-<link rel="stylesheet" href="../code/stylesheet.css">
+<link rel="stylesheet" href="stylesheet.css">
 <body>
     <section>
  <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" >
@@ -50,7 +50,7 @@ if (isset($_POST["submit"])){
     $email = $_POST["email"];
     $pwd = $_POST["pwd"];
 
-    require_once 'db_conn.php';
+    require_once 'conn.php';
     require_once 'functions.php';
 
     if (emptyInputLogin($email, $pwd) !== false) {
