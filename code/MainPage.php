@@ -87,7 +87,7 @@
           </table>
           
           
-          <a href='cartAdd.php?id="<?php.$row['ProductId'] ?>>Add to Cart</a>
+          <a href='cartAdd.php?id="<?php.$row['ProductId'] ?>Add to Cart</a>
           
 
           <div class="content">
