@@ -1,6 +1,7 @@
 <?php
     include "header.php";
     include "connect.php";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,9 +86,9 @@
             ?>
           </table>
           
-          <?php 
-          "<a href='cartAdd.php?id=".$row['ProductId']."'>Add to Cart</a>"
-          ?>
+          
+          <a href='cartAdd.php?id="<?php.$row['ProductId'] ?>>Add to Cart</a>
+          
 
           <div class="content">
             <div class = "records">
