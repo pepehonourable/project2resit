@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 
-$conn = new mysqli($servername, $username, $password, "shop");
+$conn = new mysqli($servername, $username, $password, "shopv");
 
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

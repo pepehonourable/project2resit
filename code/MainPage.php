@@ -45,6 +45,9 @@
             <?php
 
               if(isset($_GET['submit'])) {
+                if($_SERVER['REQUEST_METHOD']==='GET'){
+                  
+
 
                   if(isset($_GET['type'])){
 
@@ -69,6 +72,9 @@
                   }else{
                     echo 'No category selected';
                   }
+                }
+              }
+               if(!empty($musicData)){
                   foreach($musicData as $music) {
                 
               
@@ -82,12 +88,12 @@
             </tr>
             <?php
               }
-            }
+               }
             ?>
           </table>
           
           
-          <a href='cartAdd.php?id="<?php.$row['ProductId'] ?>Add to Cart</a>
+          <a href= "cartAdd.php?id"<?php.$row['ProductId'] ?>>Add to Cart</a>
           
 
           <div class="content">
