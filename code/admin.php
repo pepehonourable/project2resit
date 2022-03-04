@@ -167,7 +167,7 @@ $result = mysqli_query($conn,$query);
                                     while($row=mysqli_fetch_assoc($result))
                                     {
                                         $OrderId = $row['OrderId'];
-                                        $UserID = $row['userId'];
+                                        $UserID = $row['UserId'];
                                         $productID = $row['ProductId'];
                                         $Delivered = $row['Delivered'];
                                         $DateOrdered = $row['DateOrdered']; 
