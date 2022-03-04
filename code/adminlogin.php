@@ -3,7 +3,7 @@
 <head>
 <title>Admin Log in</title>
 </head>
-<link rel="stylesheet" href="../Styling/design.css">
+<link rel="stylesheet" href="stylesheet.css">
 <body>
     <section>
  <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" >
